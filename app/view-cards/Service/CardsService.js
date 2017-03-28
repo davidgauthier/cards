@@ -10,14 +10,12 @@ angular
         var typeUrl = 'https://api.pokemontcg.io/v1/types';
         var config = {
             params : {
-                series : 'base',
-                supertype : 'Pokémon'
+                supertype : 'Pokémon',
+                pageSize : 500
             }
         };
-        var appel = $http.get(url, config);
+        var appel = $http.get(url, config)
         var appelElement = $http.get(typeUrl);
-
-
 
         Service.getList = function(){
             return appel.then(function (response) {
@@ -28,10 +26,25 @@ angular
             });
         };
 
+
+
+        // Service.getList = function(){
+        //     return appel.then(function(cards){
+        //         var groupes = [];
+        //         for(var index in cards){
+        //             var card = cards[index];
+        //             if(le groupe de la carte n'existe pas dans groupes){
+                        // alors je crée le groupe de carte
+        //             }
+        //         }
+        //         return groupes;
+        //     });
+        // };
+
         Service.getById = function (id) {
-            return appel.then(function (response) {
-                for (var index in response.data) {
-                    var pokemon = response.data[index];
+            return appel.then(function (cards) {
+                for (var index in cards) {
+                    var pokemon = cards[index];
                     if (pokemon.id === id) {
                         return pokemon;
                     }
