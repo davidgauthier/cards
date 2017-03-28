@@ -15,5 +15,9 @@ angular
                $scope.cards = data;
            });
 
+            CardsService.getElements().then(function(elements){
+                $scope.elements = elements;
+            });
+
         }]);
 

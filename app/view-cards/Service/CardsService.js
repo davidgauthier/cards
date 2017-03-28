@@ -7,17 +7,21 @@ angular
 
         var Service = {};
         var url = 'https://api.pokemontcg.io/v1/cards';
+        var typeUrl = 'https://api.pokemontcg.io/v1/types';
         var config = {
             params : {
-                series : 'base'
+                series : 'base',
+                supertype : 'Pokémon'
             }
         };
         var appel = $http.get(url, config);
+        var appelElement = $http.get(typeUrl);
+
 
 
         Service.getList = function(){
             return appel.then(function (response) {
-                return response.data;
+                return response.data['cards'];
             }, function(){
                 console.warn('Arg, impossible de charger la liste de cartes');
                 return [];
@@ -39,5 +43,15 @@ angular
             });
 
         };
+
+        Service.getElements = function(){
+            return appelElement.then(function (response) {
+                return response.data['types'];
+            }, function(){
+                console.warn('Arg, impossible de charger la liste des éléments');
+                return [];
+            });
+        };
+
         return Service;
     });
