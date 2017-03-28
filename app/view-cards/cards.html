@@ -51,7 +51,7 @@
                     <th>set</th>
                 </tr>
                 <tr ng-repeat="card in cards
-                                | orderBy: ['nationalPokedexNumber', 'artist']
+                                | orderBy: ['subtype', 'nationalPokedexNumber', 'artist']
                                 as pokemons">
                     <td>
                         <a href="#/card/{{card._id}}">
