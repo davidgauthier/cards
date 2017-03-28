@@ -1,0 +1,27 @@
+
+
+
+
+<div class="jumbotron" ng-repeat="card in cardsNumPokemon">
+
+	<h1>{{card.name | uppercase}}</h1>
+
+	<div class="media">
+
+		<div class="media-left">
+			<a href="#">
+				<img class="media-object" ng-src="{{card.imageUrl}}" >
+			</a>
+		</div>
+
+		<div class="media-body">
+			<h4 class="media-heading">{{card.name}}</h4>
+			<p>{{card.ceQueTuVeux}}</p>
+			<!--<p>{{card.ceQueTuVeux}}</p>-->
+		</div>
+
+	</div>
+
+</div>
+
+
