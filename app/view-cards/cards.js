@@ -1,21 +1,12 @@
-(function () {
-    'use strict';
+'use strict';
 
-    angular
-        .module('cards')
-        .controller('CardsCtrl', [
-            '$scope',
-            '$http',
-            function ($scope, $http) {
+angular
+    .module('cards', ['ngRoute'])
+    .config(function($routeProvider){
+        $routeProvider.when('/cards', {
+            templateUrl : './view-cards/cards.html',
+            controller : 'CardsCtrl'
+        });
 
-
-                var type = 'cards';
-
-                var url = 'https://api.magicthegathering.io/v1';
-                $http.get(url).then(function(response){
-                    console.log(response.cards);
-                });
-            }
-        ]);
-
-})
+        // BasketService.setBig(500);
+    });
