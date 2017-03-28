@@ -10,8 +10,8 @@ angular
         var typeUrl = 'https://api.pokemontcg.io/v1/types';
         var config = {
             params : {
-                series : 'base',
-                supertype : 'Pokémon'
+                supertype : 'Pokémon',
+                pageSize: 1000
             }
         };
         var appel = $http.get(url, config);
