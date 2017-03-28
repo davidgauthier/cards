@@ -8,7 +8,7 @@ angular
         '$rootScope',
         function($scope, CardsService, $rootScope){
 
-            $rootScope.monTitre = 'Les cartes Magic';
+            $rootScope.monTitre = 'Les cartes Pokemon';
 
             CardsService.getList().then(function(data){
                $scope.cards = data;

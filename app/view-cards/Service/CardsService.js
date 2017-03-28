@@ -2,13 +2,13 @@
 
 angular
     .module('cards')
-    .factory('CardsService', function(){
+    .factory('CardsService', function($http){
 
 
         var Service = {};
 
 
-        Service.getList = function () {
+        // Service.getList = function () {
             
             var url = 'https://api.pokemontcg.io/v1/cards';
             var appel = $http.get(url);
@@ -21,8 +21,8 @@ angular
                     console.warn('Arg, impossible de charger la liste de cartes');
                 });
             };
-
-        };
+        //
+        // };
 
 
         return Service;
