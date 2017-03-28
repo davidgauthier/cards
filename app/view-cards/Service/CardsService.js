@@ -11,7 +11,7 @@ angular
         var config = {
             params : {
                 supertype : 'Pokémon',
-                pageSize : 500
+                pageSize: 1000
             }
         };
         var appel = $http.get(url, config)

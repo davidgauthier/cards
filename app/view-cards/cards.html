@@ -1,4 +1,4 @@
-<h1>Les cartes</h1>
+
 <!--<input type="text" placeholder="Titre" ng-model="filtre.titre"/><br>-->
 <!--<input type="number" placeholder="mini" ng-model="filtre.mini"/><br>-->
 <!--<input type="number" placeholder="maxi" ng-model="filtre.maxi"/><br>-->
@@ -16,35 +16,75 @@
 
 <div class="container">
     <div class="row">
-
         <div class="col-sm-12">
+
+            <h1>Les cartes</h1>
+
+            <form class="form-inline" novalidate>
+
+                <div class="form-group">
+                    <label for="exampleInputName2">Name</label>
+                    <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputEmail2">Email</label>
+                    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+                </div>
+
+            </form>
+
+            <p>{{pokemons.length}} Pokémons</p>
 
             <table class="table table-bordered table-striped table-hover">
                 <tr>
-                    <th>col-1</th>
-                    <th>col1-2</th>
-                    <th>col1-3</th>
-                    <th>col1-4</th>
-                    <th>col1-5</th>
-                    <th>col1-6</th>
+                    <th>imageUrl</th>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>artiste</th>
+                    <th>nationalPokedexNumber</th>
+                    <th>subtype</th>
+                    <th>supertype</th>
+                    <th>hp</th>
+                    <th>rarity</th>
+                    <th>series</th>
+                    <th>set</th>
                 </tr>
-                <tr>
-                    <td>val-1</td>
-                    <td>val-2</td>
-                    <td>val-3</td>
-                    <td>val-4</td>
-                    <td>val-5</td>
-                    <td>val-6</td>
+                <tr ng-repeat="card in cards
+                                | orderBy: ['nationalPokedexNumber', 'artist']
+                                as pokemons">
+                    <td>
+                        <a href="#/card/{{card._id}}">
+                            <img height="200" ng-src="{{card.imageUrl}}">
+                        </a>
+                    </td>
+                    <td>{{card.id}}</td>
+                    <td>{{card.name}}</td>
+                    <td>{{card.artist}}</td>
+                    <td>{{card.nationalPokedexNumber}}</td>
+
+                    <td>{{card.subtype}}</td>
+                    <td>{{card.supertype}}</td>
+                    <td>{{card.hp}}</td>
+                    <td>{{card.rarity}}</td>
+                    <td>{{card.series}}</td>
+                    <td>{{card.set}}</td>
                 </tr>
             </table>
 
-        </div>
 
+
+
+
+            <pre>{{cards | json }}</pre>
+
+
+        </div>
     </div>
 </div>
 
 
-<pre>{{cards | json }}</pre>
+
 
 
 <!--<table>-->
