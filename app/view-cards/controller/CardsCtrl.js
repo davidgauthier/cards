@@ -10,10 +10,14 @@ angular
 
             $rootScope.monTitre = 'Les cartes Pokemons';
 
-
+            $scope.enCours = true;
+            $scope.avancement = 0;
             CardsService.getList().then(function(data){
-               $scope.cards = data;
-           });
+                $scope.enCours = false;
+                $scope.cards = data;
+            }, undefined, function(avancement){
+                $scope.avancement = avancement;
+            });
 
             CardsService.getElements().then(function(elements){
                 $scope.elements = elements;

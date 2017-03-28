@@ -1,7 +1,5 @@
 
-<!--<input type="text" placeholder="Titre" ng-model="filtre.titre"/><br>-->
-<!--<input type="number" placeholder="mini" ng-model="filtre.mini"/><br>-->
-<!--<input type="number" placeholder="maxi" ng-model="filtre.maxi"/><br>-->
+
 
 <!--<br>-->
 
@@ -18,25 +16,18 @@
     <div class="row">
         <div class="col-sm-12">
 
+
+
             <h1>Les cartes</h1>
 
-            <form class="form-inline" novalidate>
+            <input type="text" class="form-control" placeholder="Name" ng-model="filtre.name"/><br>
 
-                <div class="form-group">
-                    <label for="exampleInputName2">Name</label>
-                    <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+            <div ng-show="enCours">
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="{{100*avancement}}" aria-valuemin="0" aria-valuemax="100" style="width: {{100*avancement}}%;"></div>
                 </div>
-
-                <div class="form-group">
-                    <label for="exampleInputEmail2">Email</label>
-                    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
-                </div>
-
-            </form>
-
-            <p>{{pokemons.length}} Pokémons</p>
-
-            <table class="table table-bordered table-striped table-hover">
+            </div>
+            <table class="table table-bordered table-striped table-hover" ng-show="!enCours">
                 <tr>
                     <th>imageUrl</th>
                     <th>id</th>
@@ -51,6 +42,7 @@
                     <th>set</th>
                 </tr>
                 <tr ng-repeat="card in cards
+                                | filter:{name:filtre.name}
                                 | orderBy: ['nationalPokedexNumber', 'artist']
                                 as pokemons">
                     <td>
